@@ -21,6 +21,21 @@
     }
 
     window.addEventListener("load", function (e) {
+        var midScores = _.pluck(students, "midterm_score");
+        midScores.sort();
+
+        var container = document.getElementById("container");
+        var data = "<p>First score is " + _.first(midScores) + "</p>";
+        data += "<p>Last score is " + _.last(midScores) + "</p>";
+        container.innerHTML = container.innerHTML + data;
+
+        data = "<p>Initial scores, minus the last 3: " + _.initial(midScores, 3) + "</p>";
+        data += "<p>Rest of the scores, minus the first 3: " + _.rest(midScores, 3) + "</p>";
+        container.innerHTML = container.innerHTML + data;
+
+        data = "<p>All the scores are : " + midScores + "</p>";
+        container.innerHTML = container.innerHTML + data;
+
     });
 </script>
 </body>
